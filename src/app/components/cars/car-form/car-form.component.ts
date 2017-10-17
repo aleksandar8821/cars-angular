@@ -29,4 +29,16 @@ export class CarFormComponent implements OnInit {
 	  this.carsService.addCar(car);
   }
 
+  preview(car:Car){
+
+  	alert(
+					`${car.mark} \n
+					${car.model} \n
+					${car.year} \n
+					${car.maxSpeed} \n
+					${car.isAutomatic} \n
+					${car.engine} \n
+					${car.numberOfDoors}`);
+  }
+
 }
