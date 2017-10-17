@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/car';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CarsService {
 
+	
 	private cars: Car[] = [
 
 		{
@@ -40,12 +42,23 @@ export class CarsService {
 		}
 
 	]
+
+	private idCount:number = this.cars.length;
+
   
 	getCars():Array<Object> {
     return this.cars;
   }
 
+  addCar(car){
+  	car.id = this.idCount + 1;
+  	//console.log(car);
+  	this.cars.push(car);
+  	this.idCount++;
 
-  constructor() { }
+  	this.router.navigate(['/cars']);
+  }
+
+  constructor(private router: Router) { }
 
 }

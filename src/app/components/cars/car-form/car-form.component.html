@@ -1,0 +1,58 @@
+<p>
+  car-form works!
+</p>
+
+
+<form #carForm="ngForm" (ngSubmit)="addCar(car)">
+  <div class="form-group">
+    <label for="exampleInputEmail1">mark</label>
+    
+    <input [(ngModel)]="car.mark" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mark" >
+  </div>
+    
+  <div class="form-group">
+    <label for="exampleInputEmail1">model</label>
+
+    <input [(ngModel)]="car.model" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="model" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">year</label>
+
+    <select name="year" [(ngModel)]="car.year">
+  		<option *ngFor = "let year of yearArray" value="{{year}}">{{year}}</option>
+  
+		</select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">maxSpeed</label>
+
+    <input [(ngModel)]="car.maxSpeed" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="maxSpeed" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">isAutomatic</label>
+
+    <input [(ngModel)]="car.isAutomatic" type="checkbox" name="isAutomatic" value="true" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">engine</label>
+
+
+    <input [(ngModel)]="car.engine" type="radio" name="engine" value=“diesel”> diesel
+	  <input [(ngModel)]="car.engine" type="radio" name="engine" value="petrol"> petrol
+	  <input [(ngModel)]="car.engine" type="radio" name="engine" value="electric"> electric
+	  <input [(ngModel)]="car.engine" type="radio" name="engine" value="hybrid"> hybrid
+	  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">numberOfDoors</label>
+
+    <input [(ngModel)]="car.numberOfDoors" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="numberOfDoors" >
+  </div>
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
