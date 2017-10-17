@@ -41,4 +41,16 @@ export class CarFormComponent implements OnInit {
 					${car.numberOfDoors}`);
   }
 
+  /*
+let keys = Object.keys(car);
+let carInfoArr = [];
+
+foreach(key in keys){
+	carInfoArr.push(car[key])
+}
+
+let carInfo = carInfoArr.split(':');
+
+  */
+
 }
