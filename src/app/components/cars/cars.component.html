@@ -1,3 +1,21 @@
-<p>
-  cars works!
-</p>
+<table class="table">
+	<tr>
+		<th>mark</th>	
+		<th>model</th>	
+		<th>year</th>	
+		<th>maxSpeed</th>	
+		<th>isAutomatic</th>	
+		<th>engine</th>	
+		<th>numberOfDoors</th>
+	</tr>
+	<tr *ngFor = "let car of cars">
+		<td>{{car.mark}}</td>
+		<td>{{car.model}}</td>
+		<td>{{car.year}}</td>
+		<td>{{car.maxSpeed}}</td>
+		<td>{{car.isAutomatic}}</td>
+		<td>{{car.engine}}</td>
+		<td>{{car.numberOfDoors}}</td>
+	</tr>	
+
+</table>

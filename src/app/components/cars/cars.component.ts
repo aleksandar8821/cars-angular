@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarsService } from '../../shared/services/cars.service';
 
 @Component({
   selector: 'app-cars',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarsComponent implements OnInit {
 
-  constructor() { }
+	cars: Array<Object>;
+
+  constructor(private carsService:CarsService) {
+
+  	this.cars = carsService.getCars();
+
+  }
 
   ngOnInit() {
   }
