@@ -42,6 +42,7 @@ export class CarFormComponent implements OnInit {
   }
 
   /*
+  Ako neces da navodis posebno vrednosti svakog propertija kao sto si gore to radio ........
 let keys = Object.keys(car);
 let carInfoArr = [];
 
