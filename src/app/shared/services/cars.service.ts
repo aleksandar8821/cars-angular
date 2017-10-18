@@ -59,6 +59,22 @@ export class CarsService {
   	this.router.navigate(['/cars']);
   }
 
+   public getById(id) {
+        let car;
+        this.cars.forEach((c) => {
+            if (c.id === id) {
+            car = c;
+            }
+        });
+        return car;
+    }
+
+		public editCar(car) {
+        this.cars.splice(this.cars.indexOf(car), 1, car);
+        // alert(car.id);
+        this.router.navigate(['/cars']);
+    }
+
   constructor(private router: Router) { }
 
 }

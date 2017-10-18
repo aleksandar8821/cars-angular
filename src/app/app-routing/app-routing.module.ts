@@ -8,6 +8,8 @@ import { CarFormComponent } from '../components/cars/car-form/car-form.component
 const appRoutes: Routes = [
   { path: 'cars', component: CarsComponent },
   { path: 'add', component: CarFormComponent },
+  { path: 'cars/edit/:id', component: CarFormComponent },
+
 
   {
     path: '',

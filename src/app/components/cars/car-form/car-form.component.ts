@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../../../shared/models/car';
 import { CarsService } from '../../../shared/services/cars.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-car-form',
@@ -14,19 +15,37 @@ export class CarFormComponent implements OnInit {
 	private car: Car = new Car();
 
 
-  constructor(private carsService:CarsService) { 
+  constructor(private carsService:CarsService, private route: ActivatedRoute) { 
 
   	for(let i = 1990; i <= 2017; i++){
   		this.yearArray.push(i);  		
   	}
+
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+
+    if (id) {
+      this.car = carsService.getById(id);
+      //alert(id);
+      console.log(this.car);
+    }
+
   }
 
   ngOnInit() {
-  	console.log(this.car.mark);
+
+  	//console.log(this.car.mark);
+
+    
+
   }
 
-	addCar(car:Car){
-	  this.carsService.addCar(car);
+	submit(car:Car){
+	  if (car.id) {
+            this.carsService.editCar(car);
+        } else {
+            this.carsService.addCar(car);
+        }
+
   }
 
   preview(car:Car){
