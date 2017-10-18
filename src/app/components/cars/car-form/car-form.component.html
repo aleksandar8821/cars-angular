@@ -1,5 +1,5 @@
 <p>
-  car-form workssssssss!
+  car-form workssssssss!!!
 </p>
 
 
@@ -14,49 +14,115 @@
     <label for="exampleInputEmail1">mark</label>
     
     <input #mark="ngModel" [(ngModel)]="car.mark" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mark" required minlength="2">
+    
+    <div *ngIf = "(mark.dirty || mark.touched) && mark.invalid" class="alert alert-danger">
+      <div *ngIf = "mark.errors.required">
+        Mark is required
+      </div>
+      <div *ngIf = "mark.errors.minlength">
+        Mark must be at least 2 characters long.
+      </div>
+    </div>
+
+    
+
+
   </div>
     
   <div class="form-group">
     <label for="exampleInputEmail1">model</label>
 
-    <input [(ngModel)]="car.model" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="model" required minlength="2">
+    <input #model="ngModel" [(ngModel)]="car.model" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="model" required minlength="2">
+
+
+    <div *ngIf="model.invalid && (model.dirty || model.touched)" class="alert alert-danger">
+      <div *ngIf="model.errors.required">
+        Model is required.
+      </div>
+      <div *ngIf="model.errors.minlength">
+        Model must be at least 2 characters long.
+      </div>
+    </div>
+
+
+
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">year</label>
 
-    <select name="year" [(ngModel)]="car.year" required>
+    <select #year="ngModel" name="year" [(ngModel)]="car.year" required>
   		<option *ngFor = "let year of yearArray" value="{{year}}">{{year}}</option>
   
 		</select>
+
+    <div *ngIf="year.invalid" class="alert alert-danger">
+      <div *ngIf="year.errors.required">
+        year is required.
+      </div>
+    </div>
+
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">maxSpeed</label>
 
-    <input [(ngModel)]="car.maxSpeed" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="maxSpeed">
+    <input #maxSpeed="ngModel" [(ngModel)]="car.maxSpeed" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="maxSpeed" min=20 max="300">
+    
+    <div *ngIf="(maxSpeed.dirty || maxSpeed.touched) && maxSpeed.invalid" class="alert alert-danger">
+      <div *ngIf="maxSpeed.errors.min">
+        Speed must be at least 20
+      </div>
+    </div>
+
+    <div *ngIf="(maxSpeed.dirty || maxSpeed.touched) && maxSpeed.invalid" class="alert alert-danger">
+      <div *ngIf="maxSpeed.errors.max">
+        Speed must be under 300
+      </div>
+    </div>
+
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">isAutomatic</label>
 
-    <input [(ngModel)]="car.isAutomatic" type="checkbox" name="isAutomatic" value="true">
+    <input #isAutomatic="ngModel" [(ngModel)]="car.isAutomatic" type="checkbox" name="isAutomatic" value="true">
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">engine</label>
 
 
-    <input [(ngModel)]="car.engine" type="radio" name="engine" value=“diesel” required> diesel
-	  <input [(ngModel)]="car.engine" type="radio" name="engine" value="petrol" required> petrol
-	  <input [(ngModel)]="car.engine" type="radio" name="engine" value="electric" required> electric
-	  <input [(ngModel)]="car.engine" type="radio" name="engine" value="hybrid" required> hybrid
+    <input #engine="ngModel" [(ngModel)]="car.engine" type="radio" name="engine" value=“diesel” required> diesel
+	  <input #engine="ngModel" [(ngModel)]="car.engine" type="radio" name="engine" value="petrol" required> petrol
+	  <input #engine="ngModel" [(ngModel)]="car.engine" type="radio" name="engine" value="electric" required> electric
+	  <input #engine="ngModel" [(ngModel)]="car.engine" type="radio" name="engine" value="hybrid" required> hybrid
 	  </div>
+
+    <div *ngIf="engine.invalid" class="alert alert-danger">
+      <div *ngIf="engine.errors.required">
+        engine is required.
+      </div>
+      
+    </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">numberOfDoors</label>
 
-    <input [(ngModel)]="car.numberOfDoors" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="numberOfDoors"  required>
+    <input #numberOfDoors="ngModel" [(ngModel)]="car.numberOfDoors" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="numberOfDoors" min="2" max="5"  required>
+
+    <div *ngIf="(numberOfDoors.dirty || numberOfDoors.touched) && numberOfDoors.invalid" class="alert alert-danger">
+      <div *ngIf="numberOfDoors.errors.min">
+        Number of doors must be at least 2
+      </div>
+    </div>
+
+    <div *ngIf="(numberOfDoors.dirty || numberOfDoors.touched) && numberOfDoors.invalid" class="alert alert-danger">
+      <div *ngIf="numberOfDoors.errors.max">
+        Max number of doors is 5
+      </div>
+    </div>
+
   </div>
 
   <button type="button" class="btn"
